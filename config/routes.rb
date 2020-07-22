@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   resources :teams do
     member do
-      #特定のルーティングの更新
       patch 'change_owner'
     end
     resources :assigns, only: %w(create destroy)
