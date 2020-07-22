@@ -59,7 +59,7 @@ class TeamsController < ApplicationController
     if current_user == @team.owner
       user = User.find_by(id: params[:user_id])
       @team.update(owner_id: user.id)
-      ChangeLeaderMailer.change_owner_mail(user.email, @team.name).deliver
+      ChangeLeaderMailer.changed_leader_mailier(user.email).deliver
       redirect_to @team, notice: I18n.t('views.messages.changed_leader')
     else
       redirect_to @team, notice: I18n.t('views.messages.failed_to_change_owner')
